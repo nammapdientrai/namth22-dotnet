@@ -2,6 +2,7 @@ pipeline {
     agent {
         label "master"
     }
+
     parameters {
 		string(name: 'aws_key', defaultValue: 'trhnam0906@gmail.com', description: '')
 		string(name: 'build_version', defaultValue: '0.1', description: '')
@@ -62,17 +63,11 @@ pipeline {
     }
 
     stages {
-	    stage('Clean up Jenkins workspace') {
-            steps {
-                sh '''rm -rf ${WORKSPACE}/*'''
-            }
-		}	
-
        stage('Validate') {
             steps {                 
                 sh "${PACKER} --version"
-                sh " ${PACKER} inspect packer.json"
-                sh " ${PACKER} validate packer.json"
+                sh "${PACKER} inspect packer.json"
+                sh "${PACKER} validate packer.json"
             }
         }    
 

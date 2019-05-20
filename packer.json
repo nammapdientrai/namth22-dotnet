@@ -27,8 +27,6 @@
       "user_data_file": "{{env `user_data_file`}}",
       "disable_stop_instance": "{{env `disable_stop_instance`}}"
      },
-    
-  
     "builders" : [{
       "type" : "amazon-ebs",
       "access_key" : "{{user `aws_access_key`}}",
