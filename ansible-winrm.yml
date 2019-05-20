@@ -1,0 +1,56 @@
+- hosts: hostB
+  tasks:
+      - name: Create file
+        file:
+            path: /tmp/yallo
+            state: touch
+
+      - name: Install IIS (Web-Server only)
+        win_feature:
+          name: Web-Server
+          state: present
+          wait: true
+
+      - name: Install IIS (Web-Server and Web-Common-Http)
+        win_feature:
+          name:
+          - Web-Server
+          - Web-Common-Http
+          state: present
+
+      - name: Install NET-Framework-Core from file
+        win_feature:
+          name: NET-Framework-Core
+          source: C:\Temp\iso\sources\sxs
+          state: present
+
+      - name: Install IIS Web-Server with sub features and management tools
+        win_feature:
+          name: Web-Server
+          state: present
+          include_sub_features: yes
+          include_management_tools: yes
+        register: win_feature
+
+      - name: Reboot if installing Web-Server feature requires it
+        win_reboot:
+        when: win_feature.reboot_required
+
+      # Start a website
+      - name: Acme IIS site
+        win_iis_website:
+          name: "namth22-demo-iis"
+          state: started
+          port: 80
+          ip: 127.0.0.1
+          hostname: namth22-demo-iis.local
+          application_pool: "namth22-demo-iis"
+          physical_path: c:\sites\namth22-demo-iis
+          parameters: logfile.directory:c:\sites\logs
+        register: website
+
+      # Remove Default Web Site and the standard port 80 binding
+      - name: Remove Default Web Site
+        win_iis_website:
+          name: "Default Web Site"
+          state: absent

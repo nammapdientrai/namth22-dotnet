@@ -63,7 +63,7 @@ pipeline {
     }
 
     stages {
-       stage('Validate') {
+       	stage('Validate') {
             steps {                 
                 sh "${PACKER} --version"
                 sh "${PACKER} inspect packer.json"
