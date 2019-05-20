@@ -69,30 +69,21 @@ pipeline {
                 // sh "pip install --user pywinrm>=0.3.0"
             }
 		}	
-		stage ('Checkout') {
-			steps {
-			checkout([$class: 'GitSCM',
-			branches: [[name: '*/master']], 
-			userRemoteConfigs: [[
-			credentialsId: 'github-access-sme-demolab',
-			url: 'https://github.com/sme-demolab/stamps-aws-stage.git']]
-			]) 
-			}
-		}
 
        stage('Validate') {
             steps {                 
-                        sh "which packer ; packer -version"
-                        sh " ${PACKER} inspect packer.json"
-                        sh " ${PACKER} validate packer.json"
-					//	sh " ${PACKER} validate -var-file=packer-vars.json packer.json"
-                    }
-        }              
+                sh "which packer ; packer -version"
+                sh " ${PACKER} inspect packer.json"
+                sh " ${PACKER} validate packer.json"
+            //	sh " ${PACKER} validate -var-file=packer-vars.json packer.json"
+            }
+        }    
+
         stage('Build') {
             steps {
-                    // sh " PACKER_LOG=1 PACKER_LOG_PATH=packerlog.txt packer build -machine-readable  -dry-run -var-file=packer-vars.json packer.json"
-					  sh " PACKER_LOG=1 PACKER_LOG_PATH=packerlog.txt packer build -machine-readable packer.json"
-                    }
+            // sh " PACKER_LOG=1 PACKER_LOG_PATH=packerlog.txt packer build -machine-readable  -dry-run -var-file=packer-vars.json packer.json"
+                sh " PACKER_LOG=1 PACKER_LOG_PATH=packerlog.txt packer build -machine-readable packer.json"
+            }
         }
     }
 }
