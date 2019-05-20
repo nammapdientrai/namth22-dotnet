@@ -82,7 +82,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                //sh " PACKER_LOG=1 PACKER_LOG_PATH=packerlog.txt packer build -machine-readable packer.json"
+                sh " PACKER_LOG=1 PACKER_LOG_PATH=packerlog.txt packer build -machine-readable packer.json"
+				
 				echo "Build ...."
 			}
         }
