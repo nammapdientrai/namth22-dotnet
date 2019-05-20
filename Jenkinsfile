@@ -77,10 +77,12 @@ pipeline {
         }    
 
 		stage('Show variable') {
-			echo "${aws_access}"
-			echo "${winrm_access}"
-			echo "${aws_access_key}"
-			echo "${aws_secret_key}"
+			steps {
+				echo "${aws_access}"
+				echo "${winrm_access}"
+				echo "${aws_access_key}"
+				echo "${aws_secret_key}"
+			}
 		}
 
         stage('Build') {
