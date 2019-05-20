@@ -64,7 +64,6 @@
       "force_deregister" : "true",
       "force_delete_snapshot" : "true",
       "disable_stop_instance" : "{{user `disable_stop_instance`}}"
-  
      }]
   }
   
