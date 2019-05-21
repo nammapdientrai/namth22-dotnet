@@ -37,7 +37,7 @@
         state: started
         port: 80
         ip: 127.0.0.1
-        hostname: namth22-demo-iis.local
+        hostname: namth22-demo-iis.com
         application_pool: "namth22-demo-iis"
         physical_path: c:\sites\namth22-demo-iis
         parameters: logfile.directory:c:\sites\logs
