@@ -1,9 +1,9 @@
 - hosts: namth22
   tasks:
-      - name: Create file
-        file:
-            path: C:\hello.txt
-            state: touch
+    - name: Create directory structure
+      win_file:
+        path: C:\namth22-demo
+        state: directory
 
       # - name: Install IIS (Web-Server only)
       #   win_feature:
