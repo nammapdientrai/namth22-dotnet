@@ -14,7 +14,7 @@ pipeline {
 				sh "ansible-playbook -i hosts "+
 				   "--extra-vars='ansible_winrm_server_cert_validation=ignore "+
 				   "ansible_user=Administrator "+
-				   "ansible_password=${winrm_pass} "+
+				   "ansible_password=${WINRM_PASS} "+
 				   "ansible_connection=winrm "+
 				   "ansible_port=5985 "+ 
 				   "ansible_winrm_operation_timeout_sec=120 "+
