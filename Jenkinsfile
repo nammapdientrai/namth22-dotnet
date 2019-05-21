@@ -15,7 +15,8 @@ pipeline {
 				   "--extra-vars='ansible_winrm_server_cert_validation=ignore "+
 				   "ansible_user=Administrator "+
 				   "ansible_password=${winrm_pass} "+
-				   "ansible_connection=winrm ansible_port=5985 "+ 
+				   "ansible_connection=winrm "+
+				   "ansible_port=5985 "+ 
 				   "ansible_winrm_operation_timeout_sec=120 "+
 				   "ansible_winrm_read_timeout_sec=180' ansible-winrm.yml -vvv"
             }
