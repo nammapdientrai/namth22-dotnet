@@ -1,9 +1,5 @@
 - hosts: namth22
   tasks:
-    - name: Create directory structure
-      win_file:
-        path: C:\namth22-demo
-        state: directory
 
     - name: Install IIS (Web-Server and Web-Common-Http)
       win_feature:
@@ -25,6 +21,16 @@
       when: win_feature.reboot_required
 
     # Start a website
+    - name: Create directory structure
+      win_file:
+        path: C:\sites
+        state: directory
+    
+    - name: Create directory structure
+      win_file:
+        path: C:\sites\namth22-demo-iis
+        state: directory
+
     - name: Acme IIS site
       win_iis_website:
         name: "namth22-demo-iis"
