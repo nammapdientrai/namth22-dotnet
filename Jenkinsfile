@@ -10,7 +10,7 @@ pipeline {
     stages {
        	stage('Run ansible') {
             steps {                 
-				sh "ansible-playbook -i hosts -m ansible-winrm.yml -vvv"
+				sh "ansible-playbook -i hosts ansible-winrm.yml -vvv"
             }
         }    
     }
