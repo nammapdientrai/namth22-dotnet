@@ -1,4 +1,4 @@
-- hosts: namth22
+- hosts: 18.138.252.187
   tasks:
       - name: Create file
         file:
