@@ -11,7 +11,7 @@ pipeline {
        	stage('Run ansible') {
             steps {                 
 				//sh "ansible-playbook -i hosts ansible-winrm.yml"
-				sh "ansible-playbook "+
+				sh "ansible-playbook -i hosts "+
 				   "--extra-vars='ansible_winrm_server_cert_validation=ignore "+
 				   "ansible_user=Administrator "+
 				   "ansible_password=${winrm_pass} "+
