@@ -64,6 +64,23 @@
       "force_deregister" : "true",
       "force_delete_snapshot" : "true",
       "disable_stop_instance" : "{{user `disable_stop_instance`}}"
-     }]
+     }],
+     "provisioners" : [
+      {
+        "type" : "powershell",
+        "pause_before" : "15s",
+        "inline" : [
+           "Write-Output (\"EC2_VM_IP=\" + (New-Object System.Net.WebClient).DownloadString(\"http://169.254.169.254/latest/meta-data/public-ipv4\"))"
+        ]
+        },
+      {
+      "type" : "shell-local",
+      "command" : "cat packerlog.txt | grep -o '[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\}' | grep -v 1.1.0.1 | grep -v 169.254.169.254 | sort| uniq > {{user `ansible_inventory`}}"
+        },
+        {
+        "type" : "shell-local",  
+      "command" : "ansible-playbook --extra-vars='ansible_winrm_server_cert_validation=ignore ansible_user={{user `winrm_username`}} ansible_password={{user `winrm_password`}} ansible_connection=winrm ansible_port={{user `winrm_port`}} ansible_winrm_operation_timeout_sec=120 ansible_winrm_read_timeout_sec=180' ansible/bootstrap.yml -vvv"
+       }
+      ]    
   }
   
