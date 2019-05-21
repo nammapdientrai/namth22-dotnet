@@ -11,14 +11,7 @@ pipeline {
        	stage('Run ansible') {
             steps {                 
 				//sh "ansible-playbook -i hosts ansible-winrm.yml"
-				sh "ansible-playbook -i hosts "+
-				   "--extra-vars='ansible_winrm_server_cert_validation=ignore "+
-				   "ansible_user=Administrator "+
-				   "ansible_password=${WINRM_PASS} "+
-				   "ansible_connection=winrm "+
-				   "ansible_ssh_port=5985 "+ 
-				   "ansible_winrm_operation_timeout_sec=120 "+
-				   "ansible_winrm_read_timeout_sec=180' ansible-winrm.yml -vvv"
+				sh "ansible-playbook -i hosts --extra-vars='ansible_winrm_server_cert_validation=ignore ansible_user=Administrator ansible_password=${WINRM_PASS} ansible_connection=winrm ansible_ssh_port=5985 ansible_winrm_operation_timeout_sec=120 ansible_winrm_read_timeout_sec=180' ansible-winrm.yml"
             }
         }    
     }
