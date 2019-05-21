@@ -4,7 +4,7 @@ pipeline {
     }
 
 	environment {
-		WINRM_PASS ='7O(KytgaH?Fb8?L@fW.d-RKw(LF3XPVZ'
+		WINRM_PASS = '7O(KytgaH?Fb8?L@fW.d-RKw(LF3XPVZ'
 	}
 
     stages {
@@ -16,7 +16,7 @@ pipeline {
 				   "ansible_user=Administrator "+
 				   "ansible_password=${WINRM_PASS} "+
 				   "ansible_connection=winrm "+
-				   "ansible_port=5985 "+ 
+				   "ansible_ssh_port=5985 "+ 
 				   "ansible_winrm_operation_timeout_sec=120 "+
 				   "ansible_winrm_read_timeout_sec=180' ansible-winrm.yml -vvv"
             }
