@@ -52,7 +52,7 @@ pipeline {
 	      aws_key	        	  = "${params.aws_key}"
 	      region		          = "${params.region}"
 	      vpc_id		          = "${params.vpc_id}"
-          subnet_id		          = "${params.subnet_id}"
+          //subnet_id		          = "${params.subnet_id}"
           security_group_id		  = "${params.security_group_id}"  
           winrm_host			  = "${params.winrm_host}"
 	      ami_owners			  = "${params.ami_owners}"
