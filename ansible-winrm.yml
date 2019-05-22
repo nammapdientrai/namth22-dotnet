@@ -35,9 +35,8 @@
       win_iis_website:
         name: "namth22-demo-iis"
         state: started
-        port: 80
-        ip: 127.0.0.1
-        hostname: namth22-demo-iis.com
+        port: 8081
+        ip: localhost
         application_pool: "namth22-demo-iis"
         physical_path: c:\sites\namth22-demo-iis
         parameters: logfile.directory:c:\sites\logs
