@@ -3,7 +3,7 @@ pipeline {
         label "master"
     }
 
-    parameters {
+    /*parameters {
 		string(name: 'aws_key', defaultValue: 'namth22', description: '')
 		string(name: 'build_version', defaultValue: '0.1', description: '')
 		string(name: 'Release', defaultValue: 'Latest', description: '')
@@ -65,28 +65,28 @@ pipeline {
 
 	      //ansible_inventory		  = "${params.ansible_inventory}"
 	      //user_data_file		  = "${params.user_data_file}"
-    }
+    }*/
 
     stages {
-        stage('Validate') {
+        /*stage('Validate') {
             steps {                 
                 sh " ${PACKER} validate packer.json"
 
                 echo "Validate"
             }
-        } 
+        }
 
         stage('Build IMA with packer') {
             steps {
-                sh "PACKER_LOG=1 PACKER_LOG_PATH=packerlog.txt packer build -machine-readable packer.json"
+                //sh "PACKER_LOG=1 PACKER_LOG_PATH=packerlog.txt packer build -machine-readable packer.json"
 
                 echo "Build IMA with packer"
             }
-        }   
+        }*/   
 
        	stage('Run ansible') {
             steps {                 
-				// sh "ansible-playbook -i hosts ansible-winrm.yml"
+				sh "ansible-playbook -i hosts ansible-winrm.yml"
 
                 echo "Run ansible"
             }

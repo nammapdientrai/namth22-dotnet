@@ -1,4 +1,8 @@
 - hosts: namth22
+  vars:
+      ansible_site_path: "C:\\inetpub\\sites"
+      ansible_site_name: "namth22-demo-iis"
+
   tasks:
 
     - name: Install IIS (Web-Server and Web-Common-Http)
@@ -23,22 +27,22 @@
     # Start a website
     - name: Create directory structure
       win_file:
-        path: C:\sites
+        path: "{{ ansible_site_path }}"
         state: directory
     
     - name: Create directory structure
       win_file:
-        path: C:\sites\namth22-demo-iis
+        path: "{{ ansible_site_path }}\\{{ ansible_site_name }}"
         state: directory
 
     - name: Acme IIS site
       win_iis_website:
-        name: "namth22-demo-iis"
+        name: "{{ ansible_site_name }}"
         state: started
-        port: 8081
+        port: 8085
         ip: localhost
-        application_pool: "namth22-demo-iis"
-        physical_path: c:\sites\namth22-demo-iis
+        application_pool: "{{ ansible_site_name }}"
+        physical_path: "{{ ansible_site_path }}\\{{ ansible_site_name }}"
         parameters: logfile.directory:c:\sites\logs
       register: website
 
