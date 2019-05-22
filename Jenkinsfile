@@ -62,21 +62,20 @@ pipeline {
 	      disable_stop_instance	  = "${params.disable_stop_instance}"
     }
 
-    options {
-        ansiColor('xterm')
-        timestamps()
-    }
-
     stages {
         stage('Validate') {
             steps {                 
                 sh " ${PACKER} validate packer.json"
+
+                echo "Validate"
             }
         }    
 
        	stage('Run ansible') {
             steps {                 
 				// sh "ansible-playbook -i hosts ansible-winrm.yml"
+
+                echo "Run ansible"
             }
         }    
     }
