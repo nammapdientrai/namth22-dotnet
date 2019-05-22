@@ -40,7 +40,7 @@
         name: "{{ ansible_site_name }}"
         state: started
         port: 8085
-        ip: localhost
+        ip: 127.0.0.1
         application_pool: "DefaultAppPool"
         physical_path: "{{ ansible_site_path }}\\{{ ansible_site_name }}"
         parameters: logfile.directory:c:\sites\logs
