@@ -34,8 +34,8 @@ pipeline {
 	environment {
 		  PACKER = 'packer'
 
-		  //aws_access 			  =  credentials('aws_access')
-		  //winrm_access		      =  credentials('winrm_access')
+		  aws_access 			  =  credentials('aws_access')
+		  winrm_access		      =  credentials('winrm_access')
 
 		  aws_access_key		  = "${aws_access_usr}"
 		  aws_secret_key		  = "${aws_access_psw}"
