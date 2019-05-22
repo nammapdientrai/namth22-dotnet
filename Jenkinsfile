@@ -9,7 +9,7 @@ pipeline {
 		string(name: 'Release', defaultValue: 'Latest', description: '')
 
 		string(name: 'source_ami', defaultValue: 'ami-08289040f56a29bdb', description: '')
-		string(name: 'source_ami_name', defaultValue: 'windows2019-base', description: '')
+		string(name: 'source_ami_name', defaultValue: 'namth-demo-iis', description: '')
 		string(name: 'OS_Version', defaultValue: 'windows2019-base', description: '')
 
  		string(name: 'vpc_id', defaultValue: 'vpc-44c4f323', description: '')
