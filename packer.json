@@ -73,11 +73,13 @@
         },
       {
       "type" : "shell-local",
+      "pause_before" : "20s",
       "command" : "cat packerlog.txt | grep -o '[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\}' | grep -v 1.1.0.1 | grep -v 169.254.169.254 | sort| uniq > {{user `ansible_inventory`}}"
         },
         {
-        "type" : "shell-local",  
-      "command" : "ansible-playbook --extra-vars='ansible_winrm_server_cert_validation=ignore ansible_user={{user `winrm_username`}} ansible_password={{user `winrm_password`}} ansible_connection=winrm ansible_port={{user `winrm_port`}} ansible_winrm_operation_timeout_sec=120 ansible_winrm_read_timeout_sec=180' ansible/bootstrap.yml -vvv"
+        "type" : "shell-local",
+        "pause_before" : "25s",  
+        "command" : "ansible-playbook --extra-vars='ansible_winrm_server_cert_validation=ignore ansible_user={{user `winrm_username`}} ansible_password={{user `winrm_password`}} ansible_connection=winrm ansible_port={{user `winrm_port`}} ansible_winrm_operation_timeout_sec=120 ansible_winrm_read_timeout_sec=180' ansible/bootstrap.yml -vvv"
        }
       ]    
   }

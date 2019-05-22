@@ -91,8 +91,6 @@ pipeline {
                 echo "Run ansible"
             }
         }  
-
-
     }
 }
 
