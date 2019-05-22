@@ -13,7 +13,7 @@ pipeline {
 		string(name: 'OS_Version', defaultValue: 'windows2019-base', description: '')
 
  		string(name: 'vpc_id', defaultValue: 'vpc-44c4f323', description: '')
-        string(name: 'subnet_id', defaultValue: 'subnet-71727d37', description: '')
+        //string(name: 'subnet_id', defaultValue: 'subnet-71727d37', description: '')
         string(name: 'region', defaultValue: 'ap-southeast-1', description: '')
 		string(name: 'instance_type', defaultValue: 't2.micro', description: '')
 		string(name: 'security_group_id', defaultValue: 'sg-03e17c8d67ad2accf', description: '')
