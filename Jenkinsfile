@@ -4,7 +4,7 @@ pipeline {
     }
 
     parameters {
-		string(name: 'aws_key', defaultValue: 'AKIA2NNIA7MQI62TJAMI', description: '')
+		string(name: 'aws_key', defaultValue: 'namth22', description: '')
 		string(name: 'build_version', defaultValue: '0.1', description: '')
 		string(name: 'Release', defaultValue: 'Latest', description: '')
 
