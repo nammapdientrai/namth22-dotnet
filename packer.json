@@ -74,7 +74,7 @@
         {
         "type" : "shell-local",
         "pause_before" : "25s",  
-        "command" : "ansible-playbook --extra-vars='ansible_winrm_server_cert_validation=ignore ansible_user={{user `winrm_username`}} ansible_password={{user `winrm_password`}} ansible_connection=winrm ansible_port={{user `winrm_port`}} ansible_winrm_operation_timeout_sec=120 ansible_winrm_read_timeout_sec=180' ansible/bootstrap.yml -vvv"
+        "command" : "ansible-playbook --extra-vars='ansible_winrm_server_cert_validation=ignore ansible_user={{user `winrm_username`}} ansible_password={{user `winrm_password`}} ansible_connection=winrm ansible_port={{user `winrm_port`}} ansible_winrm_operation_timeout_sec=120 ansible_winrm_read_timeout_sec=180' ansible-winrm.yml -vvv"
        }
       ]    
   }

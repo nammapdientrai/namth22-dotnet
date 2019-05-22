@@ -24,7 +24,14 @@
       win_reboot:
       when: win_feature.reboot_required
 
-    # Start a website
+    # Start a website -----------------------
+
+    # Remove website exist before Start a new website
+    - name: Remove Default Web Site
+      win_iis_website:
+        name: "{{ ansible_site_name }}"
+        state: absent
+
     - name: Create directory structure
       win_file:
         path: "{{ ansible_site_path }}"
